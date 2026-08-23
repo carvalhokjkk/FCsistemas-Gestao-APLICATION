@@ -10,6 +10,7 @@
     border-radius: 10px;
     border-collapse: collapse;
     overflow: hidden;
+    background: white;
     outline: 1px solid #dad2c0;
 }
 
