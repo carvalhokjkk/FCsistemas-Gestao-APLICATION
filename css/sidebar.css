@@ -1,0 +1,71 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#sidebar {
+    background-color: #12181f;
+    display: flex;
+    flex-direction: column;
+    min-width: 230px;
+    max-width: 230px;
+    height: 100%;
+    gap: 20px;
+}
+
+#sidebar .header {
+    display: flex   ;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 0px;
+    border-bottom: 1px solid #c7c1b3;
+}
+
+#sidebar .header .brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 77.5%;
+    gap: 15px;
+}
+
+#sidebar .header .brand .logo {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+    border-radius: 100%;
+    border: 2px solid #c7c1b3;
+}
+#sidebar .header .brand .title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #c7c1b3;
+}
+
+#nav-bar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    gap: 3px;
+}
+#nav-bar .nav-item {
+    width: 85%;
+    display: flex;
+    gap: 15px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    color: #c7c1b3;
+    cursor: pointer;
+    transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+#nav-bar .nav-item:hover, #nav-bar .nav-item.selected {
+    background-color: #1c2531;
+    color: #ffffff;
+}
+

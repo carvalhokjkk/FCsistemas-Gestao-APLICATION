@@ -1,3 +1,6 @@
+class AppSidebar extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
 <link rel="stylesheet" href="../css/sidebar.css">
 <div id="sidebar">
     <div class="header">
@@ -29,3 +32,8 @@
     <div class="footer">
     </div>
 </div>
+    `;
+  }
+}
+
+customElements.define('app-sidebar', AppSidebar);

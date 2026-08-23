@@ -1,0 +1,79 @@
+.table-box {
+    width: 100%;
+    * {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}
+
+.table-box table {
+    width: 100%;
+    border-radius: 10px;
+    border-collapse: collapse;
+    overflow: hidden;
+    outline: 1px solid #dad2c0;
+}
+
+thead {
+    background-color: #e6e0d2;
+    border-bottom: 1px solid #dad2c0;
+}
+thead th {
+    font-size: 10px;
+    color: #726a5b;
+}
+
+th, td {
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: #1b2027;
+    font-size: 13px;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+th:last-child,
+td:last-child {
+    width: 1%;
+    white-space: nowrap;
+}
+
+tr .nome-cpf div{
+    display: flex;
+    flex-direction: column;
+}
+tr .nome-cpf div .nome{
+    font-weight: bold;
+}
+tr .nome-cpf div .cpf{
+    font-size: 12px;
+    flex-direction: column;
+    color: #726a5b;
+}
+
+.row-actions {
+    display: flex;
+    gap: 7px;
+}
+
+.row-actions button {
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    border: 1px solid #dad2c0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.row-actions button:hover {
+    background-color: #12181f15;
+    border-color: #12181f50;
+}
+
+
