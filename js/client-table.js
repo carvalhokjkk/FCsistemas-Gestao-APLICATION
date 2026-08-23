@@ -1,4 +1,8 @@
-<link rel="stylesheet" href="../css/table.css">
+
+class ClientTable extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
+<link rel="stylesheet" href="../css/client-table.css">
 <div class="table-box">
     <div class="table">
         <table>
@@ -28,3 +32,8 @@
         </table>
     </div>
 </div>
+    `;
+  }
+}
+
+customElements.define('client-table', ClientTable);
