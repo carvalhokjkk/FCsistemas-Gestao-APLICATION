@@ -8,6 +8,7 @@ class ClientTable extends HTMLElement {
         <table>
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>CLIENTE</th>
                     <th>CONTATO</th>
                     <th>CIDADE</th>

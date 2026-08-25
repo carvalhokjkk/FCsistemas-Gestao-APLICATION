@@ -75,6 +75,7 @@
                 padding-left: 10px;
 
             }
+            
 
         </style>
     </head>
@@ -91,14 +92,14 @@
                         <div class="buton-group">
                             <div class="search_box">
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                                <input type="text" name="" id="search-client" placeholder="Buscar cliente...">
+                                <input type="text" name="" id="search-client" placeholder="Buscar cliente..." oninput="load_tabela(this.value)">
                             </div>
-                            <input type="button" id="btn-add-cliente" value="Novo cliente" onclick="swap_modal('modal-clientes')"></input>
+                            <input type="button" id="btn-add-cliente" value="Novo cliente" onclick="swap_modal('modal-clientes');swap_modal_form('register-client-form')"></input>
                         </div>
                     </div>
-                    <client-table id="porraeessa"></client-table>
+                    <client-table></client-table>
                 </div>
-            </div>
+            </div>  
         </div>
 
         <style>
@@ -125,6 +126,7 @@
             }
             .modal {
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 width: 480px;
@@ -134,11 +136,14 @@
             }
 
             .modal form {
-                display: flex;
+                display: none;
                 flex-direction: column;
                 width: 90%;
                 height: 90%;
                 gap: 15px;
+            }
+            .modal form.active {
+                display: flex;
             }
             .modal .modal-title {
                 display: flex;
@@ -203,7 +208,7 @@
 
         <div class="modal-container" id="modal-clientes">
             <div class="modal">
-                <form action="" id="register-client-form">
+                <form action="" id="register-client-form" class="">
                     <div class="modal-title">
                         <span class="title">Clientes</span>
                         <span class="instructions">Preencha os dados do novo cliente.</span>
@@ -221,6 +226,26 @@
                     <div class="field-row footer">
                         <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
                         <div class="field"><input type="button" value="Salvar cliente" class="save" onclick="if(add_cliente()){swap_modal('modal-clientes')};"></div>
+                    </div>
+                </form>
+                <form action="" id="edit-client-form" class="active">
+                    <div class="modal-title">
+                        <span class="title">Editar cliente</span>
+                        <span class="instructions">Preencha os novos dados do novo cliente.</span>
+                    </div>
+                    <div class="field-row">
+                        <div class="field"><label for="">* Nome</label><input type="text" placeholder="Nome" id="editar-cliente-nome"></div>
+                        <div class="field"><label for="">* CPF / CPNJ</label><input id="editar-cliente-cpf" type="text" placeholder="000.000.000-00"></div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field"><label for="">* Telefone</label><input type="text" placeholder="(00) 0000-0000" id="editar-cliente-numero"></div>
+                        <div class="field"><label for="">Status</label><select type="text" placeholder="Name" id="editar-cliente-status"><option value="ativo">Ativo</option><option value="inativo">Inativo</option></select></div>
+                    </div>
+                    <div class="field"><label for="">Email</label><input type="email" placeholder="" id="editar-cliente-email"></div>
+                    <div class="field"><label for="">Endereço</label><input type="text" placeholder="Rua, Nº, Bairro, Cidade" id="editar-cliente-endereco"></div>
+                    <div class="field-row footer">
+                        <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
+                        <div class="field"><input type="button" value="Salvar alterações" class="save" onclick="swap_modal('modal-clientes');"></div>
                     </div>
                 </form>
             </div> 
