@@ -8,14 +8,14 @@ body {
     background-color: #12181f;
     display: flex;
     flex-direction: column;
-    min-width: 230px;
-    max-width: 230px;
+    min-width: 280px;
+    max-width: 280px;
     height: 100%;
     gap: 20px;
 }
 
 #sidebar .header {
-    display: flex   ;
+    display: flex;
     height: 70px;
     justify-content: center;
     align-items: center;

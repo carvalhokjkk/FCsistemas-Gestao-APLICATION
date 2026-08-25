@@ -1,0 +1,10 @@
+.aba-title {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.aba-title .title {
+    font-size: 28px;
+}

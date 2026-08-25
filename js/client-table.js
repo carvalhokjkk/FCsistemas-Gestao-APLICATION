@@ -2,7 +2,7 @@
 class ClientTable extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-<link rel="stylesheet" href="../css/client-table.css">
+<link rel="stylesheet" href="../css/table.css">
 <div class="table-box">
     <div class="table">
         <table>

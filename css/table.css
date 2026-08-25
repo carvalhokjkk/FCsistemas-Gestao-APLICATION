@@ -21,6 +21,7 @@ thead {
 thead th {
     font-size: 10px;
     color: #726a5b;
+    padding: 15px;
 }
 
 th, td {
@@ -64,7 +65,7 @@ tr .nome-cpf div .cpf{
     height: 25px;
     background-color: transparent;
     border: 1px solid #dad2c0;
-    border-radius: 5px;
+    border-radius: 5px; 
     display: flex;
     justify-content: center;
     align-items: center;
