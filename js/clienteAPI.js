@@ -83,7 +83,7 @@ function addClientRow(cliente) {
         <td>
             <div class="row-actions"> 
                 <button id='editar-cliente-btn' onclick='edit_client_open(${JSON.stringify(cliente)})'><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button>
-                <button><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg></button>
+                <button><svg width="14" height="14" onclick='deletar_cliente(${cliente.id})' viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg></button>
             </div>
         </td>
     `;
@@ -125,7 +125,15 @@ async function editar_cliente() {
   if (!editando_id) {
     return
   }
-  if (validar_cliente(data)) {
+  var dataValidacao = {
+    'cliente-nome': data['editar-cliente-nome'],
+    'cliente-cpf': data['editar-cliente-cpf'],
+    'cliente-numero': data['editar-cliente-numero'],
+    'cliente-status': data['editar-cliente-status'],
+    'cliente-email': data['editar-cliente-email'],
+    'cliente-endereco': data['editar-cliente-endereco']
+  }
+  if (validar_cliente(dataValidacao)) {
     await edit_cliente_db(editando_id, data)
     await load_tabela();
   }
@@ -140,14 +148,12 @@ async function edit_cliente_db(id, cliente) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        body: JSON.stringify({
-          nome: cliente['editar-cliente-nome'],
-          cpf: cliente['editar-cliente-cpf'],
-          numero: cliente['editar-cliente-numero'],
-          status: cliente['editar-cliente-status'],
-          email: cliente['editar-cliente-email'],
-          endereco: cliente['editar-cliente-endereco']
-        })
+        nome: cliente['editar-cliente-nome'],
+        cpf: cliente['editar-cliente-cpf'],
+        numero: cliente['editar-cliente-numero'],
+        status: cliente['editar-cliente-status'],
+        email: cliente['editar-cliente-email'],
+        endereco: cliente['editar-cliente-endereco']
       })
     });
 
@@ -156,4 +162,25 @@ async function edit_cliente_db(id, cliente) {
   } catch (erro) {
     console.error("Erro ao editar cliente:", erro);
   }
+}
+
+
+async function deletar_cliente_db(id) {
+  try {
+    const resposta = await fetch(`https://fcsistemas-gestao.onrender.com/clientes/${id}`, {
+      method: "DELETE"
+    });
+    const dados = await resposta.json();
+    return dados;
+  } catch (erro) {
+    console.error("Erro ao deletar cliente:", erro);
+  }
+}
+
+async function deletar_cliente(id) {
+  if (!confirm('Tem certeza que deseja excluir este cliente?')) {
+    return
+  }
+  await deletar_cliente_db(id)
+  await load_tabela();
 }
