@@ -10,7 +10,7 @@ function addSkuRow(sku) {
         <td class="status">${sku.status}</td>
         <td>
             <div class="row-actions"> 
-                <button id='editar-cliente-btn' onclick='edit_sku_open(${JSON.stringify(sku)})'><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button>
+                <button id='editar-sku-btn' onclick='edit_sku_open(${JSON.stringify(sku)})'><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button>
                 <button><svg width="14" height="14" onclick='' viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg></button>
             </div>
         </td>
@@ -24,16 +24,6 @@ function limpar_tabela_estoque() {
     var body = document.getElementById('estoque-table-body');
     body.replaceChildren()
 }
-addSkuRow({
-    'nome': 'Unidade de estoque',
-    'categoria': 'cat1',
-    'qnt_estoque': '10',
-    'valor': '1000',
-    'valor_venda': '2000',
-    'total_estoque': 0,
-    'status': 'Em estoque!',
-})
-
 
 
 var sku_editando_id = null
@@ -52,7 +42,7 @@ function resgatar_dados_sku(sku) {
   document.getElementById('editar-item-preco-venda').value = sku['valor_venda']
 }
 
-async function editar_cliente() {
+async function editar_sku() {
     var data = extract_form('editar-sku-nome', 'editar-sku-categoria', 'editar-item-qnt', 'editar-item-preco-un', 'editar-item-preco-venda')
     console.log('data extraida, data: ${}')
     if (!sku_editando_id) {
@@ -88,21 +78,19 @@ async function edit_estoque_db(id, sku) {
   }
 }
 
-async function listarEstoque(filtro = "") {
-  try {
-    const url = filtro
-      ? `https://fcsistemas-gestao.onrender.com/estoque?filtro=${encodeURIComponent(filtro)}`
-      : `https://fcsistemas-gestao.onrender.com/estoque`;
 
-    const resposta = await fetch(url);
-    const clientes = await resposta.json();
-    return clientes;
-  } catch (erro) {
-    console.error("Erro ao buscar clientes:", erro);
-  }
-  return []
+
+
+
+async function add_sku() {
+    var data = extract_form('sku-nome', 'sku-categoria', 'item-qnt', 'item-preco-un', 'item-preco-venda')
+
+    swap_modal('modal-clientes');
+    document.getElementById('register-sku-form').reset()
+    await cadastrarSku(data)
+    await loadEstoque();
+    return true
 }
-
 
 
 async function cadastrarSku(sku) {
@@ -114,11 +102,11 @@ async function cadastrarSku(sku) {
       },
       body: JSON.stringify({
         id: sku['id'],
-        nome: sku['editar-sku-nome'],
-        categoria: sku['editar-sku-categoria'],
-        qnt: sku['editar-item-qnt'],
-        valor: sku['editar-item-preco-un'],
-        valor_venda: sku['editar-item-preco-venda'],
+        nome: sku['sku-nome'],
+        categoria: sku['sku-categoria'],
+        qnt: sku['item-qnt'],
+        valor: sku['item-preco-un'],
+        valor_venda: sku['item-preco-venda'],
         status: 'PLACEHOLDER',
       })
     });
@@ -126,6 +114,30 @@ async function cadastrarSku(sku) {
     const dados = await resposta.json();
     return dados;
   } catch (erro) {
-    console.error("Erro ao cadastrar cliente:", erro);
+    console.error("Erro ao cadastrar sku:", erro);
   }
 }
+
+async function loadEstoque(filtro = "") {
+  try {
+    const url = filtro
+      ? `https://fcsistemas-gestao.onrender.com/estoque?filtro=${encodeURIComponent(filtro)}`
+      : `https://fcsistemas-gestao.onrender.com/estoque`;
+
+    const resposta = await fetch(url);
+    const estoque = await resposta.json();
+    return estoque;
+  } catch (erro) {
+    console.error("Erro ao buscar estoque:", erro);
+  }
+  return []
+}
+
+async function listarEstoque(filtro = ''){
+    var estoque = await loadEstoque(filtro);
+    limpar_tabela_estoque()
+    for(let sku of estoque){
+        addSkuRow(sku)
+    }
+}
+listarEstoque();
