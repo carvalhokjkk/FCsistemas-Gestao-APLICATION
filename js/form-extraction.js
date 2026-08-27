@@ -3,6 +3,6 @@ function extract_form(...elements) {
     for(let i = 0; i < elements.length; i++) {
         data[elements[i]] = document.getElementById(elements[i]).value
     }
+
     return data
 }
-

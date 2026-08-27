@@ -64,7 +64,7 @@ body {
     transition: background-color 0.1s ease, color 0.1s ease;
 }
 
-#nav-bar .nav-item:hover, #nav-bar .nav-item.selected {
+#nav-bar .nav-item:hover, #nav-bar .nav-item.active {
     background-color: #1c2531;
     color: #ffffff;
 }

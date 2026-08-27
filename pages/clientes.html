@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link rel="stylesheet" href="../css/default.css">
+        <link rel="stylesheet" href="../css/modal.css">
         <style>
             #box {
                 display: flex;
@@ -17,7 +18,13 @@
                 min-width: 920px;
                 max-width: 920px;
             }
-
+            #content .content-page {
+                display: none;
+                flex-direction: column;
+            }
+            #content .content-page.active {
+                display: flex;
+            }
             .aba-header {
                 display: flex;
                 justify-content: space-between;
@@ -45,26 +52,27 @@
                 border-radius: 7px;
                 border: none;
             }
-            #btn-add-cliente {
+            
+            .btn-add-item {
                 width: 100px;
                 background-color: #12181f;
                 color: #f5f1E7;
                 transition: background-color 0.1s ease;
                 cursor: pointer;
             }
-            #btn-add-cliente:hover {
+            .btn-add-item:hover {
                 background-color: #232d3b;
             }
             .search_box {
                 display: flex;
                 border-radius: 7px;
             }
-            .search_box #search-client {
+            .search_box .search-box-input {
                 width: 200px;
                 border-left: none;
                 border-radius: 0px 7px 7px 0px;
             }
-            .search_box #search-client:focus {
+            .search_box .search-box-input:focus {
                 outline: none;
             }
 
@@ -83,7 +91,7 @@
         <div id="box">
             <app-sidebar></app-sidebar>
             <div id="content">
-                <div class="cliente">
+                <div class="cliente content-page">
                     <div class="aba-header">
                         <div class="title">
                             <span class="aba-name">Clientes</span>
@@ -92,119 +100,31 @@
                         <div class="buton-group">
                             <div class="search_box">
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                                <input type="text" name="" id="search-client" placeholder="Buscar cliente..." oninput="load_tabela(this.value)">
+                                <input type="text" name="" id="search-client" class="search-box-input" placeholder="Buscar cliente..." oninput="load_tabela(this.value)">
                             </div>
-                            <input type="button" id="btn-add-cliente" value="Novo cliente" onclick="swap_modal('modal-clientes');swap_modal_form('register-client-form')"></input>
+                            <input type="button" id="btn-add-cliente" class="btn-add-item" value="Novo cliente" onclick="swap_modal('modal-clientes');swap_modal_form('register-client-form')"></input>
                         </div>
                     </div>
                     <client-table></client-table>
                 </div>
+                <div class="estoque content-page active">
+                    <div class="aba-header">
+                        <div class="title">
+                            <span class="aba-name">Estoque</span>
+                            <span class="aba-subname">Gerencia e observe seu estoque</span>
+                        </div>
+                        <div class="buton-group">
+                            <div class="search_box">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                <input type="text" name="" id="search-sku" class="search-box-input" placeholder="Buscar item no estoque..." oninput="">
+                            </div>
+                            <input type="button" id="btn-add-sku" class="btn-add-item" value="Novo Item" onclick="swap_modal('modal-clientes');swap_modal_form('register-sku-form')"></input>
+                        </div>
+                    </div>
+                    <estoque-table></estoque-table>
+                </div>
             </div>  
         </div>
-
-        <style>
-            input {
-                outline: none;
-                border: none;
-
-            }
-            input[type='button'] {
-                cursor: pointer;
-            }
-            .modal-container.active {
-                display: flex;
-            }
-            .modal-container {
-                display: none;
-                position: absolute;
-                top: 0px;
-                width: 100%;
-                height: 100%;
-                align-items: center;
-                justify-content: center;
-                background-color: #00000036;
-            }
-            .modal {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                width: 480px;
-                background-color: #FFFDF8;
-                height: 550px;
-                border-radius: 15px;
-            }
-
-            .modal form {
-                display: none;
-                flex-direction: column;
-                width: 90%;
-                height: 90%;
-                gap: 15px;
-            }
-            .modal form.active {
-                display: flex;
-            }
-            .modal .modal-title {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-            .modal-title .title {
-                font-size: 24px;
-            }
-            .modal-title .instructions {
-                font-size: 14px;
-            }
-            .modal .field {
-                display: flex;
-                width: 100%;
-                flex-direction: column;
-                gap: 5px;
-                margin-bottom: 5px;
-            } 
-            .modal .field label,.modal form select {
-                color: #726a5b;
-            } 
-            .modal .field-row {
-                display: flex;
-                justify-content: space-between;
-                gap: 10px;
-            }
-            .modal form input,  .modal form select{
-                padding: 12px 10px;
-                flex-grow: 1;
-                border-radius: 10px;
-            }
-            .modal form input[type="text"],.modal form input[type="email"], .modal form select  {
-                border: 1px solid #dad2c0;
-            }
-            .modal form select {
-                padding-right: 10px;
-                appearance: none;
-                cursor: pointer;
-            }
-            .modal form input:focus, .modal form select {
-                outline: none;
-            }
-            .modal .footer{
-                width: 60%;
-                align-self: flex-end;
-            }
-
-            input.save {
-                background-color: black;
-                color: white;
-            }
-            input.cancel {
-                background-color: white;
-                border: 1px solid #dad2c0;
-                width: 80%;
-                align-self: flex-end;
-            }
-            
-
-        </style>
 
         <div class="modal-container" id="modal-clientes">
             <div class="modal">
@@ -225,7 +145,7 @@
                     <div class="field"><label for="">Endereço</label><input type="text" placeholder="Rua, Nº, Bairro, Cidade" id="cliente-endereco"></div>
                     <div class="field-row footer">
                         <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
-                        <div class="field"><input type="button" value="Salvar cliente" class="save" onclick="if(add_cliente()){swap_modal('modal-clientes')};"></div>
+                        <div class="field"><input type="button" value="Salvar cliente" class="save" onclick="add_cliente();"></div>
                     </div>
                 </form>
                 <form action="" id="edit-client-form" class="active">
@@ -245,16 +165,45 @@
                     <div class="field"><label for="">Endereço</label><input type="text" placeholder="Rua, Nº, Bairro, Cidade" id="editar-cliente-endereco"></div>
                     <div class="field-row footer">
                         <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
-                        <div class="field"><input type="button" value="Salvar alterações" class="save" onclick="editar_cliente();swap_modal('modal-clientes');"></div>
+                        <div class="field"><input type="button" value="Salvar alterações" class="save" onclick="editar_cliente();"></div>
+                    </div>
+                </form>
+                <form action="" id="register-sku-form" class="">
+                    <div class="modal-title">
+                        <span class="title">Cadastrar Item</span>
+                        <span class="instructions">Preencha os campos para inserção de um novo item no estoque</span>
+                    </div>
+                    <div class="field-row">
+                        <div class="field"><label for="">Nome</label><input type="text" placeholder="Nome" id="sku-nome"></div>
+                        <div class="field"><label for="">Categoria</label><input id="cliente-cpf" type="text" placeholder="Categoria"></div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field"><label for="">Qnt inicial</label><input type="text" placeholder="000" id="cliente-numero"></div>
+                        <div class="field"><label for="">Qnt inicial</label><input type="text" placeholder="000" id="cliente-numero"></div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field"><label for="">Preço un.</label><input type="text" placeholder="$" id="cliente-numero"></div>
+                        <div class="field"><label for="">Valor venda</label><input type="text" placeholder="$" id="cliente-numero"></div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field"><label for="" style="text-align: center;">Scan code</label><input type="button" value="scan" id="cliente-numero"></div>
+                    </div>
+                    <div class="field-row footer">
+                        <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
+                        <div class="field"><input type="button" value="Salvar item" class="save" onclick=""></div>
                     </div>
                 </form>
             </div> 
         </div>
     </body>
     <script src="../js/sidebar.js"></script>
-    <script src="../js/client-table.js"></script>
     <script src="../js/swap_class.js"></script>
     <script src="../js/form-extraction.js"></script>
+
+    <script src="../js/client-table.js"></script>
     <script src="../js/clienteAPI.js"></script>
+
+    <script src="../js/estoque-table.js"></script>
+    <script src="../js/estoqueAPI.js"></script>
 
 </html>

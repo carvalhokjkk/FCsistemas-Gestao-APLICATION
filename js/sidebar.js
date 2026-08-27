@@ -12,19 +12,19 @@ class AppSidebar extends HTMLElement {
         </div>
     </div>
     <nav id="nav-bar">
-        <div class="nav-item">
+        <div class="nav-item" onclick="swap_page_class('', this)">
             <div class="nav-ico">1</div>
             <span>Painel</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="swap_page_class('cliente', this)">
             <div class="nav-ico">2</div>
             <span>Clientes</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="swap_page_class('', this)">
             <div class="nav-ico">3</div>
             <span>Serviços</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="swap_page_class('estoque', this)">
             <div class="nav-ico">4</div>
             <span>Estoque</span>
         </div>

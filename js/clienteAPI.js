@@ -1,6 +1,7 @@
 async function add_cliente() {
     var data = extract_form('cliente-nome', 'cliente-cpf', 'cliente-numero', 'cliente-status', 'cliente-email', 'cliente-endereco')
     if (validar_cliente(data)) {
+        swap_modal('modal-clientes');
         document.getElementById('register-client-form').reset()
         await cadastrarCliente(data)
         await load_tabela();
@@ -24,7 +25,7 @@ function validar_cliente(data) {
         if (data['cliente-cpf'].length == 14) {
             return true
         } 
-        console.log(data['cliente-cpf'].length)
+
         alert('Preencha um CPF/CPNJ válido!')
         return false
     }
@@ -64,7 +65,6 @@ async function listarClientes(filtro = "") {
 
     const resposta = await fetch(url);
     const clientes = await resposta.json();
-    console.log("Clientes encontrados:", clientes);
     return clientes;
   } catch (erro) {
     console.error("Erro ao buscar clientes:", erro);
@@ -121,7 +121,9 @@ function resgatar_dados_cliente(cliente) {
 }
 
 async function editar_cliente() {
+  console.log('clicado editar')
   var data = extract_form('editar-cliente-nome', 'editar-cliente-cpf', 'editar-cliente-numero', 'editar-cliente-status', 'editar-cliente-email', 'editar-cliente-endereco')
+  console.log('data extraida, data: ${}')
   if (!editando_id) {
     return
   }
@@ -133,7 +135,9 @@ async function editar_cliente() {
     'cliente-email': data['editar-cliente-email'],
     'cliente-endereco': data['editar-cliente-endereco']
   }
+  console.log('data validacao extraida')
   if (validar_cliente(dataValidacao)) {
+    swap_modal('modal-clientes');
     await edit_cliente_db(editando_id, data)
     await load_tabela();
   }

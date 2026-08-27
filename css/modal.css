@@ -1,0 +1,106 @@
+
+input {
+    outline: none;
+    border: none;
+}
+input[type='button'] {
+    cursor: pointer;
+}
+.modal-container.active {
+    display: flex;
+}
+.modal-container {
+    display: none;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #00000036;
+}
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 480px;
+    background-color: #FFFDF8;
+    height: 550px;
+    border-radius: 15px;
+}
+
+.modal form {
+    display: none;
+    flex-direction: column;
+    width: 90%;
+    height: 90%;
+    gap: 15px;
+}
+.modal form.active {
+    display: flex;
+}
+.modal .modal-title {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.modal-title .title {
+    font-size: 24px;
+}
+.modal-title .instructions {
+    font-size: 14px;
+}
+.modal .field {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 5px;
+} 
+.modal .field label,.modal form select {
+    color: #726a5b;
+} 
+.modal .field-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.modal .field-row.footer {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.modal form input,  .modal form select{
+    padding: 12px 10px;
+    flex-grow: 1;
+    border-radius: 10px;
+}
+.modal form input[type="text"],.modal form input[type="email"], .modal form select  {
+    border: 1px solid #dad2c0;
+}
+.modal form select {
+    padding-right: 10px;
+    appearance: none;
+    cursor: pointer;
+}
+.modal form input:focus, .modal form select {
+    outline: none;
+}
+.modal .footer{
+    width: 60%;
+    align-self: flex-end;
+}
+
+input.save {
+    background-color: black;
+    color: white;
+}
+input.cancel {
+    background-color: white;
+    border: 1px solid #dad2c0;
+    width: 80%;
+    align-self: flex-end;
+}
+
+
