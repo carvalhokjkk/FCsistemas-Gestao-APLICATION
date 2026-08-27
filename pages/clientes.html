@@ -175,24 +175,50 @@
                     </div>
                     <div class="field-row">
                         <div class="field"><label for="">Nome</label><input type="text" placeholder="Nome" id="sku-nome"></div>
-                        <div class="field"><label for="">Categoria</label><input id="cliente-cpf" type="text" placeholder="Categoria"></div>
+                        <div class="field"><label for="">Categoria</label><input id="sku-categoria" type="text" placeholder="Categoria"></div>
                     </div>
                     <div class="field-row">
-                        <div class="field"><label for="">Qnt inicial</label><input type="text" placeholder="000" id="cliente-numero"></div>
-                        <div class="field"><label for="">Qnt inicial</label><input type="text" placeholder="000" id="cliente-numero"></div>
+                        <div class="field"><label for="">Unidade</label><input type="text" placeholder="Un, Cx, cm..." id="item-qnt"></div>
+                        <div class="field"><label for="">Qnt inicial</label><input type="text" placeholder="000" id="item-unidade"></div>
                     </div>
                     <div class="field-row">
-                        <div class="field"><label for="">Preço un.</label><input type="text" placeholder="$" id="cliente-numero"></div>
-                        <div class="field"><label for="">Valor venda</label><input type="text" placeholder="$" id="cliente-numero"></div>
+                        <div class="field"><label for="">Preço un.</label><input type="text" placeholder="$" id="item-preco-un"></div>
+                        <div class="field"><label for="">Valor venda</label><input type="text" placeholder="$" id="item-preco-venda"></div>
                     </div>
                     <div class="field-row">
-                        <div class="field"><label for="" style="text-align: center;">Scan code</label><input type="button" value="scan" id="cliente-numero"></div>
+                        <div class="field"><label for="" style="text-align: center;">Scan code</label><input type="button" value="scan" id="item-scan-code"></div>
                     </div>
                     <div class="field-row footer">
                         <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
                         <div class="field"><input type="button" value="Salvar item" class="save" onclick=""></div>
                     </div>
                 </form>
+                <form action="" id="edit-sku-form" class="">
+                    <div class="modal-title">
+                        <span class="title">Editar item</span>
+                        <span class="instructions">Preencha os campos para inserção de um novo item no estoque</span>
+                    </div>
+                    <div class="field-row">
+                        <div class="field"><label for="">Nome</label><input type="text" placeholder="Nome" id="editar-sku-nome"></div>
+                        <div class="field"><label for="">Categoria</label><input id="editar-sku-categoria" type="text" placeholder="Categoria"></div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field"><label for="">Unidade</label><input type="text" placeholder="Un, Cx, cm..." id="editar-item-unidade"></div>
+                        <div class="field"><label for="">Qnt em estoque</label><input type="text" placeholder="000" id="editar-item-qnt"></div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field"><label for="">Preço un.</label><input type="text" placeholder="$" id="editar-item-preco-un"></div>
+                        <div class="field"><label for="">Valor venda</label><input type="text" placeholder="$" id="editar-item-preco-venda"></div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field"><label for="" style="text-align: center;">Scan code</label><input type="button" value="scan" id="editar-item-scan-code"></div>
+                    </div>
+                    <div class="field-row footer">
+                        <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
+                        <div class="field"><input type="button" value="Salvar item" class="save" onclick=""></div>
+                    </div>
+                </form>
+
             </div> 
         </div>
     </body>

@@ -113,8 +113,8 @@ function edit_client_open(cliente) {
 }
 function resgatar_dados_cliente(cliente) {
   document.getElementById('editar-cliente-nome').value = cliente['nome']
-  document.getElementById('editar-cliente-cpf').value = cliente['cpf']
-  document.getElementById('editar-cliente-numero').value = cliente['numero']
+  document.getElementById('editar-item-qnt').value = cliente['cpf']
+  document.getElementById('editar-item-unidade').value = cliente['unidade']
   document.getElementById('editar-cliente-status').value = cliente['status']
   document.getElementById('editar-cliente-email').value = cliente['email']
   document.getElementById('editar-cliente-endereco').value = cliente['endereco']
