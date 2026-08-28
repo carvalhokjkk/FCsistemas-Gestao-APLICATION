@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ordem de serviço</title>
+
+        <style>
+            #main-frame {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 210mm;
+                height: 296mm;
+                border: 1px solid black;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                width: 90%;
+                height: 96%;
+                gap: 25px;
+            }
+
+            .header {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                gap: 20px;
+            }
+            .header .info {
+                display: flex;
+                justify-content: space-between;
+            }
+            .header .title {
+                text-align: center;
+                font-size: 24px;
+                font-weight: bold;
+            }
+            
+            .header .brand {
+                display: flex;
+                gap: 10px;
+            }
+            .header .brand .brand-logo {
+                width: 96px;
+                height: 96px;
+                border: 1px solid gray;
+            }
+            .header .brand .brand-info {
+                display: flex;
+                flex-direction: column;
+            }
+            .header .brand .brand-info .brand-name {
+                font-weight: bold;
+            }
+            .header .os-info {
+                display: flex;
+                align-items: center;
+
+                flex-direction: column;
+            }
+            .header .os-info .info {
+                display: flex;
+                flex-direction: column;
+                padding: 10px 20px;
+                background-color: rgb(212, 216, 219);
+            }
+
+            .section {
+                border: 1px solid rgba(0, 0, 0, 0.247);
+                border-radius: 3px;
+                display: flex;
+                width: 100%;
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px 0px;
+            }
+            .section .title {
+                text-align: center;
+                width: 100%;
+                font-weight: bold;
+            }
+            .info-cliente .dados {
+                display: flex;
+                flex-direction: column;
+                gap: 7px;
+            }
+            .info-cliente .dados-row{
+                display: flex;
+                width: 75%;
+                justify-content: space-between;
+                gap: 30px;
+                align-self: center;
+
+            }
+            .info-cliente .dados .info-section{
+                display: flex;
+                gap: 5px;
+            }
+
+        </style>
+        
+    </head>
+    <body>
+
+        <div id="main-frame">
+            <div class="container">
+                <div class="header">
+                    <div class="title"><span>ORDEM DE SERVIÇO</span></div>
+                    <div class="info">
+                        <div class="brand">
+                            <img src="#" alt="" class="brand-logo">
+                            <div class="brand-info">
+                                <span class="brand-name">Brand name</span>
+                                <span class="brand-cpnj">brand cnpj</span>
+                            </div>
+                        </div>
+                        <div class="os-info">
+                            <div class="info">
+                                <span class="os-id">ORDEM NUMERO: 0001</span>
+                                <span class="os-emit-date">Data de abertura: 00/00/0000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section info-cliente">
+                    <div class="title">DADOS CLIENTE</div>
+                    <div class="dados-row">
+                        <div class="dados">
+                            <div class="info-section nome-section"><b>Nome:</b><span id="nome-cliente-info"></span></div>
+                            <div class="info-section nome-section"><b>Enedereço:</b><span id="nome-cliente-info"></span></div>
+                            <div class="info-section nome-section"><b>Cidade:</b><span id="nome-cliente-info"></span></div>
+                            <div class="info-section nome-section"><b>Telefone:</b><span id="nome-cliente-info"></span></div>
+                        </div>
+                        <div class="dados">
+                            <div class="info-section nome-section"><b>CPF / CNPJ:</b><span id="nome-cliente-info"></span></div>
+                            <div class="info-section nome-section"><b>Bairro:</b><span id="nome-cliente-info"></span></div>
+                            <div class="info-section nome-section"><b>CEP:</b><span id="nome-cliente-info"></span></div>
+                            <div class="info-section nome-section"><b>Email:</b><span id="nome-cliente-info"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        
+    </body>
+</html>
+
+<script>
+    function print_ordem(){
+        const documento = document.getElementById('frame');
+        const janela = window.open();
+        janela.document.write(documento.outerHTML);
+        janela.document.close();
+        janela.print();
+    }
+</script>
