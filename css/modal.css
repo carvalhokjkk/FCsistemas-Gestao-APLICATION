@@ -89,6 +89,14 @@ input[type='button'] {
 }
 .modal .footer{
     width: 60%;
+    height: 100%;
+    align-self: flex-end;
+}
+.modal .footer .input-group{
+    display: flex;
+    height: 40px;
+    width: 100%;
+    gap: 10px;
     align-self: flex-end;
 }
 

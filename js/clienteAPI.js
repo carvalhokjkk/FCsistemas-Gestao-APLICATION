@@ -19,7 +19,6 @@ function validar_cliente(data) {
         return false
     } else if(data['cliente-status'] == '') {
         data['cliente-status'] = 'Ativo'
-        return false
     }
     if (data['cliente-cpf'].length != 11) {
         if (data['cliente-cpf'].length == 14) {

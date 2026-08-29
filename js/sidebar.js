@@ -12,7 +12,7 @@ class AppSidebar extends HTMLElement {
         </div>
     </div>
     <nav id="nav-bar">
-        <div class="nav-item" onclick="swap_page_class('', this)">
+        <div class="nav-item" onclick="swap_page_class('painel', this)">
             <div class="nav-ico">1</div>
             <span>Painel</span>
         </div>
@@ -20,7 +20,7 @@ class AppSidebar extends HTMLElement {
             <div class="nav-ico">2</div>
             <span>Clientes</span>
         </div>
-        <div class="nav-item" onclick="swap_page_class('', this)">
+        <div class="nav-item" onclick="swap_page_class('servicos', this)">
             <div class="nav-ico">3</div>
             <span>Serviços</span>
         </div>

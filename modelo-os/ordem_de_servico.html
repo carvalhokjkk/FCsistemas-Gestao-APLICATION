@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ordem de serviço</title>
 
-        <style>
+        <style id="style">
             #main-frame {
                 display: flex;
                 justify-content: center;
@@ -98,6 +98,74 @@
                 display: flex;
                 gap: 5px;
             }
+            .info-servico .descricao .list .list-wraper{
+                display: flex;
+                flex-direction: column;
+                max-height: 25mm;
+                flex-wrap: wrap;
+            }
+            .info-produtos {
+                display: flex;
+                flex-direction: column;
+            }
+            .info-produtos .list{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                width: 90%;
+                justify-content: center;
+                justify-self: center;
+            }
+            .info-produtos .prod-list-item {
+                display: flex;
+                gap: 5px;
+                width: 100%;
+            }
+            .info-produtos .prod-list-item .item-price {
+                display: flex;
+                justify-self: flex-end;
+                margin-left: auto;
+            }
+
+            .info-orcamento {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+            }
+            .info-orcamento .container {
+                width: 90%;
+            }
+            .info-orcamento .container .row {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .footer {
+                display: flex;
+                width: 100%;
+                justify-content: space-evenly;
+            }
+            .signature {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 7px;
+            }
+            @media print {
+                @page {
+                    size: A4;
+                    margin: 0;
+                }
+
+                html, body {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
 
         </style>
         
@@ -139,9 +207,68 @@
                             <div class="info-section nome-section"><b>CEP:</b><span id="nome-cliente-info"></span></div>
                             <div class="info-section nome-section"><b>Email:</b><span id="nome-cliente-info"></span></div>
                         </div>
+                        
                     </div>
                 </div>
+                <div class="section info-servico">
+                    <div class="title">Descrição do serviço</div>
+                    <div class="descricao">
+                        <ul class="list">
+                            <div class="list-wraper">
+                                <li></li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section info-produtos">
+                    <div class="title">Lista de produtos</div>
+                    <div class="descricao">
+                        <div class="list">
+                            <div class="prod-list-item">
+                                <span class="item-qnt">1x</span>
+                                <span class="item-name">name</span>
+                                <span>:</span>
+                                <span class="item-price">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section info-obs">
+                    <div class="title">Observações do serviço</div>
+                    <div class="descricao">
+                        <ul class="list">
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section info-orcamento">
+                    <div class="title">Orçamento</div>
+                    <div class="container">
+                        <div class="row">
+                            <span>Valor dos serviços:</span>
+                            <span class="valor-serviços">$</span>
+                        </div>
+                        <div class="row">
+                            <span>Valor de peças/produtos:</span>
+                            <span class="valor-serviços">$</span>
+                        </div>
+                        <div class="row">
+                            <span><b> Valor total:</b></span>
+                            <span class="valor-serviços">$</span>
+                        </div>
 
+                    </div>
+                    <div class="footer">
+                        <div class="signature">
+                            <span>___________________________________</span>
+                            <span>Assinatura do cliente</span>
+                        </div>
+                        <div class="signature">
+                            <span>___________________________________</span>
+                            <span>Assinatura do responsável</span>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
@@ -152,10 +279,13 @@
 
 <script>
     function print_ordem(){
-        const documento = document.getElementById('frame');
+        const documento = document.getElementById('main-frame');
+        const css = document.getElementById('style');
         const janela = window.open();
         janela.document.write(documento.outerHTML);
+        janela.document.write(css   .outerHTML);
         janela.document.close();
         janela.print();
     }
+    print_ordem()
 </script>

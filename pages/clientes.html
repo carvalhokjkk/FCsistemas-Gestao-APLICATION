@@ -107,7 +107,7 @@
                     </div>
                     <client-table></client-table>
                 </div>
-                <div class="estoque content-page active">
+                <div class="estoque content-page">
                     <div class="aba-header">
                         <div class="title">
                             <span class="aba-name">Estoque</span>
@@ -123,10 +123,25 @@
                     </div>
                     <estoque-table></estoque-table>
                 </div>
+                <div class="servicos content-page active">
+                    <div class="aba-header">
+                        <div class="title">
+                            <span class="aba-name">Serviços</span>
+                            <span class="aba-subname">Gerencia e observe seu estoque</span>
+                        </div>
+                        <div class="buton-group">
+                            <div class="search_box">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                <input type="text" name="" id="search-sku" class="search-box-input" placeholder="Buscar item no estoque..." oninput="">
+                            </div>
+                            <input type="button" id="btn-add-sku" class="btn-add-item" value="Novo Item" onclick="swap_modal('modal-clientes');swap_modal_form('register-servico')"></input>
+                        </div>
+                    </div>
+                </div>
             </div>  
         </div>
 
-        <div class="modal-container" id="modal-clientes">
+        <div class="modal-container active" id="modal-clientes">
             <div class="modal">
                 <form action="" id="register-client-form" class="">
                     <div class="modal-title">
@@ -144,11 +159,13 @@
                     <div class="field"><label for="">Email</label><input type="email" placeholder="" id="cliente-email"></div>
                     <div class="field"><label for="">Endereço</label><input type="text" placeholder="Rua, Nº, Bairro, Cidade" id="cliente-endereco"></div>
                     <div class="field-row footer">
-                        <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
-                        <div class="field"><input type="button" value="Salvar cliente" class="save" onclick="add_cliente();"></div>
+                        <div class="input-group">
+                            <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
+                            <div class="field"><input type="button" value="Salvar cliente" class="save" onclick="add_cliente();"></div>
+                        </div>
                     </div>
                 </form>
-                <form action="" id="edit-client-form" class="active">
+                <form action="" id="edit-client-form" class="">
                     <div class="modal-title">
                         <span class="title">Editar cliente</span>
                         <span class="instructions">Preencha os novos dados do novo cliente.</span>
@@ -164,8 +181,10 @@
                     <div class="field"><label for="">Email</label><input type="email" placeholder="" id="editar-cliente-email"></div>
                     <div class="field"><label for="">Endereço</label><input type="text" placeholder="Rua, Nº, Bairro, Cidade" id="editar-cliente-endereco"></div>
                     <div class="field-row footer">
-                        <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
-                        <div class="field"><input type="button" value="Salvar alterações" class="save" onclick="editar_cliente();"></div>
+                        <div class="input-group">
+                            <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
+                            <div class="field"><input type="button" value="Salvar alterações" class="save" onclick="editar_cliente();"></div>
+                        </div>
                     </div>
                 </form>
                 <form action="" id="register-sku-form" class="">
@@ -189,8 +208,10 @@
                         <div class="field"><label for="" style="text-align: center;">Scan code</label><input type="button" value="scan" id="item-scan-code"></div>
                     </div>
                     <div class="field-row footer">
-                        <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
-                        <div class="field"><input type="button" value="Salvar item" class="save" onclick="add_sku();"></div>
+                        <div class="input-group">
+                            <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
+                            <div class="field"><input type="button" value="Salvar item" class="save" onclick="add_sku();"></div>
+                        </div>
                     </div>
                 </form>
                 <form action="" id="edit-sku-form" class="">
@@ -214,8 +235,50 @@
                         <div class="field"><label for="" style="text-align: center;">Scan code</label><input type="button" value="scan" id="editar-item-scan-code"></div>
                     </div>
                     <div class="field-row footer">
-                        <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
-                        <div class="field"><input type="button" value="Salvar item" class="save" onclick="editar_sku();"></div>
+                        <div class="input-group">
+                            <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
+                            <div class="field"><input type="button" value="Salvar item" class="save" onclick="editar_sku();"></div>
+                        </div>
+                    </div>
+                </form>
+                <form action="" id="register-servico" class="active" style="overflow-y: scroll;">
+                    <div class="modal-title">
+                        <span class="title">Emitir serviço</span>
+                        <span class="instructions">Preencha os campos para cadastro de um novo pedid</span>
+                    </div>
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="">Cliente</label>
+                            <input type="text" name="" id="serviço-cliente">
+                        </div>
+                    </div>
+                    <div class="field-row servico-container">
+                        <div class="field">
+                            <label for="">Serviços</label>
+                            <div style="display: flex; gap: 10px;" class="servico-item">
+                                <input type="text" name="" class="serviço-cliente-nome" placeholder="Serviço">
+                                <input type="text" name="" class="serviço-cliente-preco" placeholder="valor" style="width: 10%;">
+                                <input type="button" name="" class="serviço-cliente-button" value="+" style="justify-self: flex-end; min-width: 10%; flex-grow: 0;" onclick="service_row_button_presed(this)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field-row produtos-container">
+                        <div class="field">
+                            <label for="">Produtos</label>
+                            <div style="display: flex; gap: 10px;" class="servico-item">
+                                <input type="text" name="" class="serviço-cliente-nome" placeholder="Produto">
+                                <input type="button" name="" class="serviço-cliente-button" value="+" style="justify-self: flex-end; min-width: 10%; flex-grow: 0;" >
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="field-row footer">
+                        <div class="input-group">
+                            <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
+                            <div class="field"><input type="button" value="Salvar item" class="save" onclick="editar_sku();"></div>
+                        </div>
                     </div>
                 </form>
 
@@ -231,5 +294,7 @@
 
     <script src="../js/estoque-table.js"></script>
     <script src="../js/estoqueAPI.js"></script>
+
+    <script src="../js/servicosAPI.js"></script>
 
 </html>
