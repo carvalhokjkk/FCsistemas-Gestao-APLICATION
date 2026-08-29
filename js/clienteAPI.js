@@ -112,17 +112,15 @@ function edit_client_open(cliente) {
 }
 function resgatar_dados_cliente(cliente) {
   document.getElementById('editar-cliente-nome').value = cliente['nome']
-  document.getElementById('editar-item-qnt').value = cliente['cpf']
-  document.getElementById('editar-item-unidade').value = cliente['unidade']
+  document.getElementById('editar-cliente-cpf').value = cliente['cpf']
+  document.getElementById('editar-cliente-numero').value = cliente['numero']
   document.getElementById('editar-cliente-status').value = cliente['status']
   document.getElementById('editar-cliente-email').value = cliente['email']
   document.getElementById('editar-cliente-endereco').value = cliente['endereco']
 }
-
 async function editar_cliente() {
-  console.log('clicado editar')
   var data = extract_form('editar-cliente-nome', 'editar-cliente-cpf', 'editar-cliente-numero', 'editar-cliente-status', 'editar-cliente-email', 'editar-cliente-endereco')
-  console.log('data extraida, data: ${}')
+  console.log(data)
   if (!editando_id) {
     return
   }

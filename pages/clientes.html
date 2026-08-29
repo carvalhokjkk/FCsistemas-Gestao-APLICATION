@@ -249,7 +249,7 @@
                     <div class="field-row">
                         <div class="field">
                             <label for="">Cliente</label>
-                            <input type="text" name="" id="serviço-cliente">
+                            <client-input-search></client-input-search>
                         </div>
                     </div>
                     <div class="field-row servico-container">
@@ -282,7 +282,7 @@
                     </div>
                     <div class="field-row footer">
                         <div class="input-group">
-                            <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes')"></div>
+                            <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes'); reset_service_form()"></div>
                             <div class="field"><input type="button" value="Salvar item" class="save" onclick="editar_sku();"></div>
                         </div>
                     </div>
@@ -302,5 +302,7 @@
     <script src="../js/estoqueAPI.js"></script>
 
     <script src="../js/servicosAPI.js"></script>
+    <script src="../js/cliente-input-search.js"></script>
+    <script src="../js/client-input-search-configs.js"></script>
 
 </html>
