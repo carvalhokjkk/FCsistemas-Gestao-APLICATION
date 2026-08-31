@@ -1,4 +1,4 @@
-class clientInputSearch extends HTMLElement {
+class itensInputSearch extends HTMLElement {
     connectedCallback() {
         this.attachShadow({ mode: 'open' })
         this.shadowRoot.innerHTML = `
@@ -7,9 +7,9 @@ class clientInputSearch extends HTMLElement {
     display: block;
     width: 100%;
 }
-#cliente-selector {
+#produto-selector {
     position: relative;
-    width: 90%;
+    width: 100%;
 }
 input {
     outline: none;
@@ -17,7 +17,7 @@ input {
     font-family: inherit;
     font-size: inherit;
 }
-#servico-cliente-input {
+#servico-produto-input {
     padding: 12px 10px;
     border-radius: 10px;
     border: 1px solid #dad2c0;
@@ -71,24 +71,24 @@ input {
     text-align: center;
 }
 </style>
-<div id="cliente-selector">
-    <input type="text" id="servico-cliente-input" autocomplete="off">
-    <input type="hidden" id="servico-cliente-id" value="">
-    <div class="selector-dropdown" id="cliente-selector-dropdown"></div>
+<div id="produto-selector">
+    <input type="text" id="servico-produto-input" autocomplete="off">
+    <input type="hidden" id="servico-produto-id" value="">
+    <div class="selector-dropdown" id="produto-selector-dropdown"></div>
 </div>
         `
         this.init_selector()
     }
 
     init_selector() {
-        var selectorWrapper = this.shadowRoot.querySelector('#cliente-selector')
-        var selectorInput = this.shadowRoot.querySelector('#servico-cliente-input')
-        var selectorHidden = this.shadowRoot.querySelector('#servico-cliente-id')
-        var selectorDropdown = this.shadowRoot.querySelector('#cliente-selector-dropdown')
+        var selectorWrapper = this.shadowRoot.querySelector('#produto-selector')
+        var selectorInput = this.shadowRoot.querySelector('#servico-produto-input')
+        var selectorHidden = this.shadowRoot.querySelector('#servico-produto-id')
+        var selectorDropdown = this.shadowRoot.querySelector('#produto-selector-dropdown')
         var selectorDebounce = null
 
-        async function buscar_clientes(termo) {
-            return await listarClientes(termo)
+        async function buscar_produtos(termo) {
+            return await loadEstoque(termo)
         }
 
         function abrir_dropdown() {
@@ -99,15 +99,15 @@ input {
             selectorDropdown.classList.remove('active')
         }
 
-        function selecionar_cliente(cliente) {
-            selectorInput.value = cliente.nome
-            selectorHidden.value = cliente.id
+        function selecionar_produto(produto) {
+            selectorInput.value = produto.nome
+            selectorHidden.value = produto.id
             fechar_dropdown()
         }
 
         function criar_handler_click(item) {
             function handler() {
-                selecionar_cliente(item)
+                selecionar_produto(item)
             }
             return handler
         }
@@ -123,7 +123,7 @@ input {
                 var item = itens[i]
                 var div = document.createElement('div')
                 div.className = 'selector-item'
-                div.innerHTML = '<span class="nome">' + item.nome + '</span><span class="detalhe">' + item.cpf + '</span>'
+                div.innerHTML = '<span class="nome">' + item.nome + '</span><span class="detalhe">' + item.valor + '</span>'
                 div.onclick = criar_handler_click(item)
                 selectorDropdown.appendChild(div)
             }
@@ -133,7 +133,7 @@ input {
         async function buscar(termo) {
             selectorDropdown.innerHTML = '<div class="selector-loading">Buscando...</div>'
             abrir_dropdown()
-            var resultados = await buscar_clientes(termo)
+            var resultados = await buscar_produtos(termo)
             render_resultados(resultados)
         }
 
@@ -159,4 +159,4 @@ input {
     }
 }
 
-customElements.define('client-input-search', clientInputSearch)
+customElements.define('itens-input-search', itensInputSearch)

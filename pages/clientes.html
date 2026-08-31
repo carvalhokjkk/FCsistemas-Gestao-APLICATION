@@ -266,7 +266,12 @@
                         <div class="field">
                             <label for="">Produtos</label>
                             <div style="display: flex; gap: 10px;" class="produto-item">
-                                <input type="text" name="" class="procuto-nome" placeholder="Produto">
+                                <input type="text" name="" class="produto-qnt" placeholder="0x" style="width: 10%;">
+                                <itens-input-search></itens-input-search>
+                                <div style="display: flex; align-items: center; flex-direction: column; justify-content: center;">
+                                    <label for="" style="font-size: 10px;">Saída</label>
+                                    <input type="checkbox" class="saida-do-estoque-check" name="" class="saida-do-estoque-check" checked>
+                                </div>
                                 <input type="button" name="" class="produto-button" value="+" style="justify-self: flex-end; min-width: 10%; flex-grow: 0;" onclick="produto_row_button_pressed(this)">
                             </div>
                         </div>
@@ -283,7 +288,7 @@
                     <div class="field-row footer">
                         <div class="input-group">
                             <div class="field"><input type="button" value="Cancelar" class="cancel" onclick="swap_modal('modal-clientes'); reset_service_form()"></div>
-                            <div class="field"><input type="button" value="Salvar item" class="save" onclick="editar_sku();"></div>
+                            <div class="field"><input type="button" value="Salvar item" class="save" onclick="salvar_servico();"></div>
                         </div>
                     </div>
                 </form>
@@ -303,6 +308,7 @@
 
     <script src="../js/servicosAPI.js"></script>
     <script src="../js/cliente-input-search.js"></script>
-    <script src="../js/client-input-search-configs.js"></script>
+    <script src="../js/itens-input-search.js"></script>
+
 
 </html>
