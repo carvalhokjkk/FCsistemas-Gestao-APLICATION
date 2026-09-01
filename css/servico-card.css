@@ -1,0 +1,59 @@
+.servicos-container {
+    display: flex;
+    width: 100%;
+
+}
+
+.servico-card {
+    width: 340px;
+    border-radius: 8px;
+    height: 200px;
+    outline: 1px solid #dad2c0;
+    padding: 20px 15px 10px 15px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    background-color: white;
+}
+
+.servico-card .nome {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.servico-card .bottom {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 18px;
+    font-weight: bold;
+    border-top: 1px dashed rgba(0, 0, 0, 0.352);
+    margin-top: auto;
+    padding-top: 10px;
+    justify-content: space-between;
+}
+
+.servico-card .bottom .preco{
+    align-self: center;
+}
+
+.servico-card .bottom .buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.servico-card .bottom .buttons button {
+    width: 28px;
+    height: 28px;
+    position: relative;
+    cursor: pointer;
+}
+
+
+
+.servico-card .bottom .buttons button svg{
+    position: absolute;
+    top: 0%;
+    right: 0%;
+}

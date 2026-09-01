@@ -101,9 +101,7 @@ function reset_service_form() {
 }
 
 
-
-
-function salvar_servico(){
+async function salvar_servico() {
     dados = obter_dados_nota()
     if (dados==null) {
         return 
@@ -111,22 +109,24 @@ function salvar_servico(){
     if (dados.servicos.length == 0 ){
         alert('Adicione pelo menos um serviço!')
         return
-    } 
-       // LANÇAR NOTA AQUI!-----------------------------------------------------⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+    }
+    await post_servico(dados)
     swap_modal('modal-clientes'); 
     reset_service_form();
 }
 
 
-
 function obter_dados_nota() {
     var ok = true
+    var titulo = ''
     var cliente_id
     var servicos = []
     var produtos = []
     var observacoes = []
 
+    titulo = document.querySelector('#titulo-servico').value
     cliente_id = document.querySelector('client-input-search').shadowRoot.getElementById('servico-cliente-id').value
+    cliente_nome = document.querySelector('client-input-search').shadowRoot.getElementById('servico-cliente-input').value
     if (cliente_id == '') {
         alert('Selecione um cliente válido!')
         return null
@@ -178,7 +178,9 @@ function obter_dados_nota() {
         }
     )
     var data = {
+        'titulo': titulo,
         'cliente_id': cliente_id,
+        'cliente_nome' : cliente_nome,
         'servicos': servicos,
         'produtos': produtos,
         'observacoes':observacoes,
@@ -190,3 +192,54 @@ function obter_dados_nota() {
         return null
     }
 }
+
+
+function load_nota() {
+    
+}
+
+
+function add_servico_card() {
+    
+}
+
+async function post_servico(data) {
+  try {
+    const resposta = await fetch("https://fcsistemas-gestao.onrender.com/servicos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        titulo: data['titulo'],
+        cliente_id: data['cliente_id'],
+        cliente_nome: data['cliente_nome'],
+        servicos: data['servicos'],
+        produtos: data['produtos'],
+        observacoes: data['observacoes']
+      })
+    });
+
+    const dados = await resposta.json();
+    return dados;
+  } catch (erro) {
+    console.error("Erro ao lançar servico:", erro);
+  }
+}
+
+async function load_servicos(filtro = "") {
+  try {
+    const url = filtro
+      ? `https://fcsistemas-gestao.onrender.com/servicos?filtro=${encodeURIComponent(filtro)}`
+      : `https://fcsistemas-gestao.onrender.com/servicos`;
+
+    const resposta = await fetch(url);
+    const servicos = await resposta.json();
+    return servicos;
+  } catch (erro) {
+    console.error("Erro ao buscar servicos:", erro);
+  }
+  return [];
+}
+
+
