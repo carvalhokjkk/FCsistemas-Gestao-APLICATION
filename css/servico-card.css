@@ -1,13 +1,16 @@
 .servicos-container {
     display: flex;
-    width: 100%;
+    flex-wrap: wrap;
+    gap: 20px;
+    overflow-y: scroll;
+    max-height: 800px;
+    width: 110%;
 
 }
-
 .servico-card {
-    width: 340px;
+    width: 260px;
     border-radius: 8px;
-    height: 200px;
+    height: 180px;
     outline: 1px solid #dad2c0;
     padding: 20px 15px 10px 15px;
     display: flex;

@@ -4,8 +4,10 @@ var selectorHidden = document.getElementById('servico-cliente-id')
 var selectorDropdown = document.getElementById('cliente-selector-dropdown')
 var selectorDebounce = null
 
-async function buscar_clientes(termo) {
-    return await listarClientes(termo)
+async function buscar_clientes(termo) { 
+    var result = await listarClientes(termo)
+    console.log("clientes: ", result)
+    return result
 }
 
 function abrir_dropdown() {

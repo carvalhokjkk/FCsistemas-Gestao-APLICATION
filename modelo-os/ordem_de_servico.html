@@ -6,6 +6,9 @@
         <title>Ordem de serviço</title>
 
         <style id="style">
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
             #main-frame {
                 display: flex;
                 justify-content: center;
@@ -166,6 +169,19 @@
                     padding: 0;
                 }
             }
+            .info-servico .descricao {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+            }
+            .info-servico .descricao .list{
+                width: 90%;
+            }
+            .info-servico .descricao .list .list-wraper > li > div{
+                display: flex;
+                justify-content: space-between;
+            }
 
         </style>
         
@@ -195,17 +211,11 @@
                 <div class="section info-cliente">
                     <div class="title">DADOS CLIENTE</div>
                     <div class="dados-row">
-                        <div class="dados">
+                        <div class="dados"> 
                             <div class="info-section nome-section"><b>Nome:</b><span id="nome-cliente-info"></span></div>
-                            <div class="info-section nome-section"><b>Enedereço:</b><span id="nome-cliente-info"></span></div>
-                            <div class="info-section nome-section"><b>Cidade:</b><span id="nome-cliente-info"></span></div>
-                            <div class="info-section nome-section"><b>Telefone:</b><span id="nome-cliente-info"></span></div>
-                        </div>
-                        <div class="dados">
                             <div class="info-section nome-section"><b>CPF / CNPJ:</b><span id="nome-cliente-info"></span></div>
-                            <div class="info-section nome-section"><b>Bairro:</b><span id="nome-cliente-info"></span></div>
-                            <div class="info-section nome-section"><b>CEP:</b><span id="nome-cliente-info"></span></div>
-                            <div class="info-section nome-section"><b>Email:</b><span id="nome-cliente-info"></span></div>
+                            <div class="info-section nome-section"><b>Enedereço:</b><span id="nome-cliente-info"></span></div>
+                            <div class="info-section nome-section"><b>Contato:</b><span id="nome-cliente-info"></span></div>
                         </div>
                         
                     </div>
@@ -215,7 +225,7 @@
                     <div class="descricao">
                         <ul class="list">
                             <div class="list-wraper">
-                                <li></li>
+                                <li><div><span>nome</span><span>valor</span></div></li>
                             </div>
                         </ul>
                     </div>
