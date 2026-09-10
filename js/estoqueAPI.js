@@ -37,7 +37,7 @@ function check_status(qnt_min, qnt) {
   else if (qnt < qnt_min) {
     return 'Baixo estoque'
   }
-  else if (qnt > qnt_min) {
+  else if (qnt >= qnt_min) {
     return 'Em estoque!'
   }
 }
@@ -78,11 +78,12 @@ function resgatar_dados_sku(sku) {
   document.getElementById('editar-item-qnt').value = sku['qnt']
   document.getElementById('editar-item-preco-un').value = sku['valor']
   document.getElementById('editar-item-preco-venda').value = sku['valor_venda']
+  document.getElementById('editar-qnt-min').value = sku['qnt_min']
 }
 
 async function editar_sku() {
     console.log('clicado editar')
-    var data = extract_form('editar-sku-nome', 'editar-sku-categoria', 'editar-item-qnt', 'editar-item-preco-un', 'editar-item-preco-venda', 'item-qnt-min')
+    var data = extract_form('editar-sku-nome', 'editar-sku-categoria', 'editar-item-qnt', 'editar-item-preco-un', 'editar-item-preco-venda', 'editar-qnt-min')
     console.log('data extraida, data: ${}')
     if (!sku_editando_id) {
         return
@@ -115,7 +116,7 @@ async function edit_estoque_db(id, sku) {
         qnt: sku['editar-item-qnt'],
         valor: sku['editar-item-preco-un'],
         valor_venda: sku['editar-item-preco-venda'],
-        qnt_min: sku['item-qnt-min'],
+        qnt_min: sku['editar-qnt-min'],
         status: 'PLACEHOLDER',
       })
     });
