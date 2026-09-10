@@ -71,15 +71,11 @@ body {
     color: #ffffff;
 }
 
-#nav-bar .nav-item.active .nav-ico {
-    outline: 1px solid #c7c1b3a6;
-}
 
 #nav-bar .nav-item .nav-ico {
     display: flex;
     justify-content: center;
     align-items: center;
-    outline: 1px solid rgba(255, 255, 255, 0.233);
     padding: 3px 7px;
     border-radius: 5px;
 }

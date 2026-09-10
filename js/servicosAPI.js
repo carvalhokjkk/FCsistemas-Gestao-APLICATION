@@ -114,6 +114,8 @@ async function salvar_servico() {
     swap_modal('modal-clientes'); 
     reset_service_form();
     await listar_servicos()
+    listarEstoque()
+    load_entradas()
 }
 
 
@@ -165,7 +167,6 @@ async function obter_dados_nota() {
             if (qnt == '') {
                 qnt = 1
             }
-
             var saida = produto.querySelector('.saida-do-estoque-check').checked
             var produto_id = produto.querySelector('itens-input-search').shadowRoot.getElementById('servico-produto-id').value
             var produto_nome = produto.querySelector('itens-input-search').shadowRoot.getElementById('servico-produto-input').value

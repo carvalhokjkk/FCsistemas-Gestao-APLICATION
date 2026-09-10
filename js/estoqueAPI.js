@@ -1,5 +1,7 @@
 function addSkuRow(sku) {
     const tr = document.createElement('tr');
+    item_status = check_status(sku.qnt_min, sku.qnt)
+    status_class = check_status_class(item_status)
     tr.innerHTML = `
         <td class="produto">${sku.nome}</td>
         <td class="categoria">${sku.categoria}</td>
@@ -7,7 +9,7 @@ function addSkuRow(sku) {
         <td class="valor">${sku.valor}</td>
         <td class="valor_venda">${sku.valor_venda}</td>
         <td class="total_estoque">${check_valor_em_estoque(sku.qnt, sku.valor)}</td>
-        <td class="status">${check_status(sku.qnt_min, sku.qnt)}</td>
+        <td class="status ${status_class}"> <span>${item_status}</span></td>
         <td>
             <div class="row-actions"> 
                 <button id='editar-sku-btn' onclick='edit_sku_open(${JSON.stringify(sku)})'><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button>
@@ -39,6 +41,22 @@ function check_status(qnt_min, qnt) {
     return 'Em estoque!'
   }
 }
+function check_status_class(status) {
+  if (status === "NEGATIVO") {
+    return 'negativo'
+  }
+  if (status === "Fora de estoque") {
+    return 'fora'
+  }
+  if (status === "Baixo estoque") {
+    return 'baixo'
+  }
+  if (status === "Em estoque!") {
+    return 'ok'
+  }
+  return 'negativo'
+}
+
 
 function limpar_tabela_estoque() {
     var body = document.getElementById('estoque-table-body');

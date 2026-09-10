@@ -77,3 +77,35 @@ tr .nome-cpf div .cpf{
     background-color: #12181f15;
     border-color: #12181f50;
 }
+
+
+td.status span {
+    border: 1px solid #dad2c0;
+    border-radius: 12px;
+    padding: 2px 13px;
+}
+
+
+td.status.negativo span{
+    border-color: #12181f50;
+    background-color: #12181fc7;
+    color: whitesmoke;
+    font-weight: bolder;
+}
+td.status.fora span{
+    border-color: #4d1010b7;
+    background-color: #680c0c86;
+    color: whitesmoke;
+    font-weight: bold;
+    ;
+}
+td.status.baixo span{
+    border-color: #4d1010b7;
+    background-color: #680c0c86;
+    color: whitesmoke;
+    ;
+}
+td.status.ok span{
+    border: 1px solid #dad2c0;
+    color: #726a5b;
+}

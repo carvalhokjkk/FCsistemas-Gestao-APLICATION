@@ -1,0 +1,32 @@
+.switcher {
+    position: relative;
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.switcher .thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 97px;
+    height: 34px;
+    background-color: #d8d8d880;
+    border-radius: 17px;
+    transition: transform 0.2s ease;
+}
+
+.switcher.saida .thumb {
+    transform: translateX(97px);
+}
+
+.switcher .option {
+    flex: 1;
+    text-align: center;
+    line-height: 40px;
+    z-index: 1;
+    font-size: 14px;
+}
