@@ -1,0 +1,84 @@
+.content-page.painel{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.content-page.painel .container{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.content-page.painel .container .line{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+
+.content-page.painel .container .painel{
+    display: flex;
+    height: 140px;
+    width: 240px;
+    flex-direction: column;
+    padding: 10px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.11);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.349);
+}
+
+
+.content-page.painel .container .painel .title{
+    font-size: 19px;
+    color: rgba(0, 0, 0, 0.589);
+}
+.content-page.painel .container .painel .subtitle{
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.589);
+    text-align: center;
+}
+.content-page.painel .container .painel .value{
+    font-size: 22px;
+
+    font-weight: bold;
+}
+.content-page.painel .container .painel .complementar{
+    font-size: 12px;
+}
+
+
+
+.content-page.painel .container .painel.servicos-recentes{
+    display: flex;
+    height: 300px;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+}
+.content-page.painel .container .painel.produtos-criticos{
+    display: flex;
+    height: 300px;
+    width: 540px;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+.content-page.painel .container .painel table{
+    border-collapse: collapse;
+}
+
+.overflow-table {
+    width: 100%;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+.produtos-criticos table td,
+.produtos-criticos table th {
+    text-align: center;
+}

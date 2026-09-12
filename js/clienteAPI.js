@@ -101,7 +101,6 @@ async function load_tabela(filtro = ''){
         addClientRow(cliente)
     }
 }
-load_tabela();
 
 
 function edit_client_open(cliente) {
@@ -185,3 +184,9 @@ async function deletar_cliente(id) {
   await deletar_cliente_db(id)
   await load_tabela();
 }
+
+
+async function atualizar_dados_clientes() {
+  await load_tabela();
+}
+atualizar_dados_clientes()

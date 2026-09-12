@@ -86,4 +86,9 @@ function converter_data_iso_br(dataIso) {
     return partes[2] + '/' + partes[1] + '/' + partes[0] // '09/09/2026'
 }
 
-load_entradas()
+
+async function atualizar_dados_entradas() {
+  await load_entradas()
+}
+atualizar_dados_entradas()
+

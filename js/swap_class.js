@@ -19,7 +19,7 @@ function swap_modal_form(form_id) {
     swap_class(form_id, 'active');
 }
 
-function swap_page_class(page, button) {
+async function swap_page_class(page, button) {
     const forms = document.querySelectorAll('#content .content-page');
     for (const form of forms) {
         form.classList.remove('active');
@@ -31,5 +31,17 @@ function swap_page_class(page, button) {
         button.classList.remove('active');
     }
     button.classList.toggle('active')
+
+    if (page == 'painel') {
+        await atualizar_dados_painel()
+    } else if (page == 'clientes') {
+        await atualizar_dados_clientes
+    } else if (page == 'estoque') {
+        await atualizar_dados_estoque()
+    } else if (page == 'servicos') {
+        await atualizar_dados_servicos()
+    } else if (page == 'entradas') {
+        await atualizar_dados_entradas()
+    }
 }
  

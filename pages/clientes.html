@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="../css/servico-card.css">
         <link rel="stylesheet" href="../css/entradas.css">
         <link rel="stylesheet" href="../css/switcher.css">
+        <link rel="stylesheet" href="../css/panel.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
         <style>
             #box {
@@ -95,6 +96,61 @@
         <div id="box">
             <app-sidebar></app-sidebar>
             <div id="content">
+                <div class="painel content-page active">
+                    <div class="aba-header">
+                        <div class="title">
+                            <span class="aba-name">Painel geral</span>
+                            <span class="aba-subname">Confira as informações de mais destaque</span>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="line">
+                            <div class="painel clientes">
+                                <span class="title">Clientes cadastrados</span>
+                                <span class="value">0</span>
+                                <span class="complementar"></span>
+                            </div>
+                            <div class="painel produtos-qnt">
+                                <span class="title">Produtos em estoque</span>
+                                <span class="value">0</span>
+                                <span class="complementar">0 em estoque baixo</span>
+                            </div>
+                            <div class="painel estoque-valor">
+                                <span class="title">Valor em estoque</span>
+                                <span class="value">R$ 0,00 </span>
+                                <span class="complementar">preço x quantidade</span>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="painel servicos-recentes">
+                                <div class="title">
+                                    <span>Serviços do dia</span>
+                                    <span class="subtitle">00/00/0000</span>
+                                </div>
+                                <div class="overflow-table"></div>
+                                <table>
+                                </table>
+                            </div>
+                            <div class="painel produtos-criticos">
+                                <div class="title">
+                                    <span>Alertas de estoque</span>
+                                    <span class="subtitle">Itens em falta</span>
+                                </div>
+                                <div class="overflow-table">
+                                    <table>
+                                        <tr>
+                                            <th>Produto</th>
+                                            <th>quantidade em estoque</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
                 <div class="cliente content-page">
                     <div class="aba-header">
                         <div class="title">
@@ -140,7 +196,7 @@
                     <div class="servicos-container">
                     </div>
                 </div>
-                <div class="entradas content-page active">
+                <div class="entradas content-page">
                     <div class="aba-header">
                         <div class="title">
                             <span class="aba-name">Entradas / Saídas</span>
@@ -165,7 +221,7 @@
                             </div>
                         </div>
                     </div>
-</div>
+                </div>
             </div>
             </div>  
         </div>
@@ -381,6 +437,8 @@
 
     <script src="../js/switcher.js"></script>
     <script src="../js/entradas.js"></script>
+
+    <script src="../js/painelAPI.js"></script>
     
 
 </html>

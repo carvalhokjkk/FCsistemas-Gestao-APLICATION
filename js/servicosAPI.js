@@ -327,4 +327,9 @@ async function deletar_serviço(id) {
 }
 
 
-listar_servicos()
+
+async function atualizar_dados_servicos() {
+  await listar_servicos()
+}
+atualizar_dados_servicos()
+

@@ -241,4 +241,9 @@ async function deletar_sku(id) {
   await listarEstoque();
 }
 
-listarEstoque();
+
+
+async function atualizar_dados_estoque() {
+  await listarEstoque();
+}
+atualizar_dados_estoque()
