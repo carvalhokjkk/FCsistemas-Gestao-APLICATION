@@ -75,7 +75,7 @@ input[type='button'] {
     flex-grow: 1;
     border-radius: 10px;
 }
-.modal form input[type="text"],.modal form input[type="email"], .modal form select  {
+.modal form input[type="text"],.modal form input[type="email"], .modal form select,.modal form input[type="number"]   {
     border: 1px solid #dad2c0;
 }
 .modal form select {

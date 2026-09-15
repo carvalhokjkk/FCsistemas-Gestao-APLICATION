@@ -43,20 +43,20 @@ async function atualizar_dados_painel() {
 
     var produtos_em_estoque = document.querySelector('.content-page.painel .produtos-qnt .value')
     var produtos_em_estoque_comp = document.querySelector('.content-page.painel .produtos-qnt .complementar')
-    produtos_em_estoque.innerHTML = estoque['qnt'] - baixo_estoque.length
-    produtos_em_estoque_comp.innerHTML = `<b>${baixo_estoque.length}</b> produtos fora de estoque` 
+    produtos_em_estoque.innerHTML = estoque['qnt'] - baixo_estoque.filter(item=>item[3]<=0).length
+    produtos_em_estoque_comp.innerHTML = `<b>${baixo_estoque.filter(item=>item[3]<=0).length}</b> produtos fora de estoque` 
 
     var valor_estoque = document.querySelector('.content-page.painel .estoque-valor .value')
     valor_estoque.innerHTML = `R$ ${estoque['valor']}`
 
-
-    document.querySelector('.content-page.painel .servicos-recentes table').innerHTML = ''
+    document.querySelector('.content-page.painel .produtos-criticos table').innerHTML = ''
     baixo_estoque.forEach(
         (item) => {
             add_estoque_alerta(item[1], item[3], check_status(item[7], item[3]))
         }
     )
-    document.querySelector('.content-page.painel .produtos-criticos table').innerHTML = ''
+
+    document.querySelector('.content-page.painel .servicos-recentes table').innerHTML = ''
     servicos_dia.forEach(
         (servico) => {
             add_servico_dia_column(servico['titulo'], servico['cliente_nome'], servico['valor'])
@@ -77,6 +77,7 @@ function add_servico_dia_column(titulo, cliente_nome, valor) {
 }
 
 function add_estoque_alerta(nome, qnt, status) {
+
     var container = document.querySelector('.content-page.painel .produtos-criticos table')
     var html = `                                        
     <tr>
@@ -85,6 +86,7 @@ function add_estoque_alerta(nome, qnt, status) {
         <td class="status ${check_status_class(status)}"><span>${status}</span></td>
     </tr>
     `
+    console.log(container)
     container.insertAdjacentHTML('beforeend', html)
 }
 

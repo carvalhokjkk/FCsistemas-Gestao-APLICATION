@@ -139,11 +139,6 @@
                                 </div>
                                 <div class="overflow-table">
                                     <table>
-                                        <tr>
-                                            <th>Produto</th>
-                                            <th>quantidade em estoque</th>
-                                            <th>Status</th>
-                                        </tr>
                                     </table>
                                 </div>
                             </div>
@@ -282,12 +277,12 @@
                         <div class="field"><label for="">Categoria</label><input id="sku-categoria" type="text" placeholder="Categoria"></div>
                     </div>
                     <div class="field-row">
-                        <div class="field"><label for="">Qnt inicial</label><input type="text" placeholder="0" id="item-qnt"></div>
-                        <div class="field"><label for="">Qnt mínima</label><input type="text" placeholder="0" id="item-qnt-min"></div>
+                        <div class="number"><label for="">Qnt inicial</label><input type="text" placeholder="0" id="item-qnt"></div>
+                        <div class="number"><label for="">Qnt mínima</label><input type="text" placeholder="0" id="item-qnt-min"></div>
                     </div>
                     <div class="field-row">
-                        <div class="field"><label for="">Preço un.</label><input type="text" placeholder="$" id="item-preco-un"></div>
-                        <div class="field"><label for="">Valor venda</label><input type="text" placeholder="$" id="item-preco-venda"></div>
+                        <div class="field"><label for="">Preço un.</label><input type="number" placeholder="$" id="item-preco-un"></div>
+                        <div class="field"><label for="">Valor venda</label><input type="number" placeholder="$" id="item-preco-venda"></div>
                     </div>
                     <div class="field-row">
                         <div class="field"><label for="" style="text-align: center;">Scan code</label><input type="button" value="scan" id="item-scan-code"></div>
@@ -309,12 +304,12 @@
                         <div class="field"><label for="">Categoria</label><input id="editar-sku-categoria" type="text" placeholder="Categoria"></div>
                     </div>
                     <div class="field-row">
-                        <div class="field"><label for="">Qnt em estoque</label><input type="text" placeholder="000" id="editar-item-qnt"></div>
-                        <div class="field"><label for="">Qnt mínima</label><input type="text" placeholder="0" id="editar-qnt-min"></div>
+                        <div class="field"><label for="">Qnt em estoque</label><input type="number" placeholder="000" id="editar-item-qnt"></div>
+                        <div class="field"><label for="">Qnt mínima</label><input type="number" placeholder="0" id="editar-qnt-min"></div>
                     </div>
                     <div class="field-row">
-                        <div class="field"><label for="">Preço un.</label><input type="text" placeholder="$" id="editar-item-preco-un"></div>
-                        <div class="field"><label for="">Valor venda</label><input type="text" placeholder="$" id="editar-item-preco-venda"></div>
+                        <div class="field"><label for="">Preço un.</label><input type="number" placeholder="$" id="editar-item-preco-un"></div>
+                        <div class="field"><label for="">Valor venda</label><input type="number" placeholder="$" id="editar-item-preco-venda"></div>
                     </div>
                     <div class="field-row">
                         <div class="field"><label for="" style="text-align: center;">Scan code</label><input type="button" value="scan" id="editar-item-scan-code"></div>
@@ -349,7 +344,7 @@
                             <label for="">Serviços</label>
                             <div style="display: flex; gap: 10px;" class="servico-item">
                                 <input type="text" name="" class="servico-nome" placeholder="Serviço">
-                                <input type="text" name="" class="servico-preco" placeholder="valor" style="width: 10%;">
+                                <input type="number" name="" class="servico-preco" placeholder="valor" style="width: 10%;">
                                 <input type="button" name="" class="servico-button" value="+" style="justify-self: flex-end; min-width: 10%; flex-grow: 0;" onclick="service_row_button_presed(this)">
                             </div>
                         </div>
@@ -358,7 +353,7 @@
                         <div class="field">
                             <label for="">Produtos</label>
                             <div style="display: flex; gap: 10px;" class="produto-item">
-                                <input type="text" name="" class="produto-qnt" placeholder="0x" style="width: 10%;">
+                                <input type="number" name="" class="produto-qnt" placeholder="0x" style="width: 10%;">
                                 <itens-input-search></itens-input-search>
                                 <div style="display: flex; align-items: center; flex-direction: column; justify-content: center;">
                                     <label for="" style="font-size: 10px;">Saída</label>
@@ -405,7 +400,7 @@
                         </div>
                         <div class="field" style="display: flex; width: 20%;">
                             <label for="">Qnt</label>
-                            <input type="text" name="" id="entrada-produto-qnt">
+                            <input type="number" name="" id="entrada-produto-qnt">
                         </div>
                     </div>
                     <div class="field-row footer">
