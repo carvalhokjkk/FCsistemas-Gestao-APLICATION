@@ -2,9 +2,17 @@ input {
     outline: none;
     border: none;
 }
+
 input[type='button'] {
     cursor: pointer;
+    padding: 0px;
+    width: 130px;
 }
+
+.modal-container input[type='button'] {
+    width: unset;
+}
+
 .modal-container.active {
     display: flex;
 }

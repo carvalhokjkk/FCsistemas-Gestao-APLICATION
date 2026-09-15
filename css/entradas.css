@@ -85,11 +85,7 @@
     padding-left: 2px;
 
 }
-.content-page.entradas .content .filtros input{
-    max-height: 17px;
-    min-height: 17px;
-    height: 17px;
-}
+
 
 .content-page.entradas .content .filtros button{
     color: white;

@@ -11,23 +11,23 @@
     border-collapse: collapse;
     overflow: hidden;
     background: white;
-    outline: 1px solid #dad2c0;
+    outline: 1px solid rgba(0, 0, 0, 0.137);
 }
 
 thead {
-    background-color: #e6e0d2;
+    background-color: rgb(27, 27, 27);
     border-bottom: 1px solid #dad2c0;
 }
 thead th {
     font-size: 10px;
-    color: #726a5b;
+    color: white;
     padding: 15px;
 }
 
 th, td {
     padding: 10px 16px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #dddddd98;
     color: #1b2027;
     font-size: 13px;
 }

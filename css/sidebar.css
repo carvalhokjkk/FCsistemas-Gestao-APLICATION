@@ -1,15 +1,10 @@
-body {
-    padding: 0px;
-    margin: 0px;
-    font-family: Arial, Helvetica, sans-serif;
-}
 
 #sidebar {
-    background-color: #12181f;
+    background-color: var(--background-darker);
     display: flex;
     flex-direction: column;
-    min-width: 280px;
-    max-width: 280px;
+    min-width: 360px;
+    max-width: 360px;
     height: 100%;
     gap: 20px;
 }
@@ -19,8 +14,9 @@ body {
     height: 70px;
     justify-content: center;
     align-items: center;
-    padding: 7px 0px;
+    padding: 15px 0px;
     border-bottom: 1px solid #c7c1b3;
+    font-size: 22px;
 }
 
 #sidebar .header .brand {
@@ -39,6 +35,8 @@ body {
     border-radius: 100%;
     border: 2px solid #c7c1b3;
 }
+
+
 #sidebar .header .brand .title {
     display: flex;
     align-items: center;
@@ -51,19 +49,21 @@ body {
     flex-direction: column;
     height: 100%;
     align-items: center;
-    gap: 3px;
+    gap: 7px;
 }
 #nav-bar .nav-item {
     width: 85%;
     display: flex;
     gap: 15px;
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
     border-radius: 10px;
     color: #c7c1b3;
     cursor: pointer;
     transition: background-color 0.1s ease, color 0.1s ease;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 300;
     align-items: center;
+    letter-spacing: 0.6px;
 }
 
 #nav-bar .nav-item:hover, #nav-bar .nav-item.active {

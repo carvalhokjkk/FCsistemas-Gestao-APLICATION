@@ -30,9 +30,6 @@ async function get_servicos_dia() {
 
 
 
-
-
-
 async function atualizar_dados_painel() {
     var baixo_estoque = await get_baixo_estoque()
     var estoque = await get_estoque()
@@ -82,11 +79,10 @@ function add_estoque_alerta(nome, qnt, status) {
     var html = `                                        
     <tr>
         <td>${nome}</td>
-        <td>${qnt}</td>
+        <td>${qnt} em estoque</td>
         <td class="status ${check_status_class(status)}"><span>${status}</span></td>
     </tr>
     `
-    console.log(container)
     container.insertAdjacentHTML('beforeend', html)
 }
 

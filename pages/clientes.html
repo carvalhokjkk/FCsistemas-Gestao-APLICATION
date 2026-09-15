@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <link rel="stylesheet" href="colors.css">
         <link rel="stylesheet" href="../css/default.css">
         <link rel="stylesheet" href="../css/modal.css">
         <link rel="stylesheet" href="../css/servico-card.css">
@@ -17,14 +18,17 @@
                 width: 100%;
                 height: 100%;
                 gap: 40px;
+                background-color: var(--background-primary);
             }
             #content {
-                width: 920px;
-                min-width: 920px;
-                max-width: 920px;
+                display: flex;
+                width: 50%;
+                height: 100%;
+
             }
             #content .content-page {
                 display: none;
+                width: 100%;
                 flex-direction: column;
             }
             #content .content-page.active {
@@ -35,6 +39,7 @@
                 justify-content: space-between;
                 padding: 20px 0px 20px 0px;
                 align-items: center;
+                min-height: 100px;
             }
             .title {
                 display: flex;
@@ -53,8 +58,9 @@
                 gap: 10px;
             }
             .buton-group input{
-                padding: 12px 10px;
+                padding: 18px 14px;
                 border-radius: 7px;
+                font-size: 16px;
                 border: none;
             }
             
@@ -86,13 +92,20 @@
                 height: 100%;
                 border-radius: 7px 0px 0px 7px;
                 padding-left: 10px;
+                width: 24px;
+            }
 
+            input {
+                padding: 12px 10px !important ;
+            }
+            .modal input {
+                padding: unset;
             }
             
 
         </style>
     </head>
-    <body>
+    <body> 
         <div id="box">
             <app-sidebar></app-sidebar>
             <div id="content">
@@ -202,7 +215,7 @@
                         <div>
                             <span>Histórico</span>
                             <div class="filtros">
-                                <button onclick="swap_modal('modal-clientes');swap_modal_form('register-entrada')">Novo registro</button>
+                                <button onclick="swap_modal('modal-clientes');swap_modal_form('register-entrada')" style="padding: 12px 10px;">Registrar</button>
                                 <div class="search">
                                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                                     <input type="text" name="" id="" placeholder="Search produtct..." oninput="entradas_produto_filtro = this.value; load_entradas();">
