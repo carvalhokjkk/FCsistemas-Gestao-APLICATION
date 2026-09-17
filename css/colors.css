@@ -1,7 +1,7 @@
 :root {
-  --sidebar_color: #12181f ;
-  --background_color: #efebe1;
-  --light_color :#fffdf8;
-  --input_borders : #dad2c0;
-  
+    --background-primary: rgb(238, 235, 235);
+    --background-secondary: rgb(55, 54, 56);
+    --background-darker: rgb(13, 13, 14);
+    
+    --fo-light: rgb(187, 197, 199);
 }
