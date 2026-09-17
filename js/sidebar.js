@@ -1,7 +1,7 @@
 class AppSidebar extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="css/sidebar.css">
 <div id="sidebar">
     <div class="header">
         <div class="brand">
